@@ -3,6 +3,7 @@
 include_once '_config/config.php';
 include_once '_functions/functions.php';
 include_once '_config/db.php';
+include_once '_classes/User.php';
 
 spl_autoload_register(function ($class) {
     include_once '_classes/' . $class . '.php';
@@ -11,7 +12,7 @@ spl_autoload_register(function ($class) {
 if (isset($_GET['page']) && !empty($_GET['page'])) {
     $page = trim(strtolower($_GET['page']));
 } else {
-    $page = 'dashboard';
+    $page = 'login';
 }
 
 $all_pages = scandir('controllers');
