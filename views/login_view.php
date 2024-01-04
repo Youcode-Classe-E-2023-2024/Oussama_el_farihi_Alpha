@@ -30,7 +30,7 @@
                     <h2 class="text-center text-4xl text-indigo-900 font-display font-semibold lg:text-left xl:text-5xl
                     xl:text-bold">Log in</h2>
                     <div class="mt-12">
-                        <form method="POST" action="../actions/login_process.php">
+                        <form method="POST" action="">
                             <div>
                                 <div class="text-sm font-bold text-gray-700 tracking-wide">Email Address</div>
                                 <input name="email" class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="email" placeholder="mike@gmail.com">
@@ -52,7 +52,7 @@
                             </div>
                         </form>
                         <div class="mt-12 text-sm font-display font-semibold text-gray-700 text-center">
-                            Don't have an account ? <a href="register.php" class="cursor-pointer text-indigo-600 hover:text-indigo-800">Sign up</a>
+                            Don't have an account ? <a href="index.php?page=register" class="cursor-pointer text-indigo-600 hover:text-indigo-800">Sign up</a>
                         </div>
                     </div>
                 </div>

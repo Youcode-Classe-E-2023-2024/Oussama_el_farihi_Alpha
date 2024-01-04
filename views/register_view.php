@@ -41,7 +41,7 @@
                 <h2 class="text-center text-4xl text-indigo-900 font-display font-semibold lg:text-left xl:text-5xl
                     xl:text-bold">Register</h2>
                 <div class="mt-12">
-                    <form method="POST" action="../actions/register_process.php">
+                    <form method="POST" action="index.php?page=register">
                         <div>
                             <div class="text-sm font-bold text-gray-700 tracking-wide">Username</div>
                             <input
