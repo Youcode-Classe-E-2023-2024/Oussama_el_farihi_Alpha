@@ -1,12 +1,19 @@
-create table users
-(
-    users_id       bigint auto_increment
-        primary key,
-    users_email    varchar(255) not null,
-    users_password text         not null,
-    users_username varchar(255) null,
-    constraint users_users_email_uindex
-        unique (users_email),
-    constraint users_users_id_uindex
-        unique (users_id)
+-- Création de la table 'Utilisateurs'
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    reset_token VARCHAR(255),
+    reset_token_expires DATETIME
+);
+
+-- Création de la table 'Notifications'
+CREATE TABLE notifications (
+    notification_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    notification_content TEXT,
+    is_read BOOLEAN DEFAULT FALSE,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES Utilisateurs(user_id)
 );
