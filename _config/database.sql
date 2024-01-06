@@ -17,3 +17,12 @@ CREATE TABLE notifications (
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES Utilisateurs(user_id)
 );
+
+-- Création de la table 'password reset'
+CREATE TABLE pwdreset (
+  pwdResetID int(11) NOT NULL,
+  pwdResetEmail text NOT NULL,
+  pwdResetSelector text NOT NULL,
+  pwdResetToken longtext NOT NULL,
+  pwdResetExpires int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
