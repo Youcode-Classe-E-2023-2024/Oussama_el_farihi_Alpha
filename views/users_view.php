@@ -102,29 +102,68 @@
       </div>
     </header>
     <!----   navbar    --->
-    <button onclick="location.href='index.php?page=add_post'" class=" mt-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Add post</button>
-    <button onclick="location.href='index.php?page=update_post'" class=" mt-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Update post</button>
     <section class="py-6 sm:py-12 dark:text-gray-100">
   <!-- component -->
 <!-- This is an example component -->
 <div class="max-w-2xl mx-auto">
+<table class="min-w-full divide-y divide-gray-200">
+    <thead>
+        <tr>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">username</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">phone</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+        </tr>
+    </thead>
+    <tbody id="users" class="bg-white divide-y divide-gray-200">
+    </tbody>
+</table>
 
-<div class="p-4 max-w-md bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-<div class="flex justify-between items-center mb-4">
-    <h3 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Latest Customers</h3>
-</div>
-<!-- Inside your users_view.php, where you want to display the users -->
-<div class="flow-root">
-  <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700" id="user-list">
+<script>
+    table = document.getElementById("users")
+    let r = ""
+    fetch("https://jsonplaceholder.typicode.com/users")
+            .then(response => response.json())
+            .then(data => {
+                data.map((val, key) => {
+                    r += `
+                    <tr id=${key}>
+            <td class="px-6 py-4 whitespace-nowrap text-black">${val.name}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-black">${val.email}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-black">${val.username}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-black">
+                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 ">${val.phone}</span>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+                <button class="px-4 py-2 font-medium text-white bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:shadow-outline-blue active:bg-blue-600 transition duration-150 ease-in-out">Edit</button>
+                <button onclick="handleDelete(${key})" class="ml-2 px-4 py-2 font-medium text-white bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:shadow-outline-red active:bg-red-600 transition duration-150 ease-in-out">Delete</button>
+            </td>
+        </tr>
+        `
+                });
+                table.innerHTML = r
+            });
 
-  </ul>
-</div>
-<div id="user-container" class="space-y-4">
-    <!-- Users will be dynamically inserted here -->
-</div>
+            var arr = []
 
-</section>
-  </div>
-  <script src="assets\js\main.js"></script>
+            function handleDelete(id){
+                document.getElementById(id).style.display = "none"
+
+                fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
+                    method: "DELETE"
+                })
+                .then(response=> {
+                    if(response.ok){
+                        Swal.fire({
+                        title: "Success",
+                        text: "User removed successfully",
+                        confirmButtonColor: '#34D399',
+                        icon: "success",
+                        });
+                    }
+                })
+            }
+</script>
 </body>
 </html>
