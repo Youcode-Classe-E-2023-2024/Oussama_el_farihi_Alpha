@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Log in</title>
 </head>
 <body>
@@ -43,6 +44,9 @@
                                 </div>
                                 <input name="password" class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="password" placeholder="Enter your password">
                             </div>
+                            <div class="flex items-center justify-between">
+                      <a href="index.php?page=resetpassword" class="text-sm font-medium text-blue-600 hover:underline dark:text-primary-500">Forgot password?</a>
+                  </div>
                             <div class="mt-10">
                                 <button name="submit" type="submit" class="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide
                                 font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-indigo-600
@@ -95,5 +99,6 @@
             </div>
         </div>
       </div>
+      <script  src="../assets/js/main.js"></script>
 </body>
 </html>
