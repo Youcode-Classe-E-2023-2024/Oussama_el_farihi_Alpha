@@ -143,40 +143,7 @@ document.getElementById('updatePostForm').addEventListener('submit', function(e)
 
 
 
-// Fetch users from API
-function fetchUsers() {
-    fetch('https://jsonplaceholder.typicode.com/users/')
-        .then(response => response.json())
-        .then(users => {
-            const container = document.getElementById('user-container');
-            users.forEach(user => {
-                const userElement = createUserElement(user);
-                container.appendChild(userElement);
-            });
-        })
-        .catch(error => console.error('Error fetching users:', error));
-}
 
-// Create user element
-function createUserElement(user) {
-    const div = document.createElement('div');
-    div.className = 'user-info bg-white p-4 rounded-lg shadow';
-
-    const name = document.createElement('h3');
-    name.textContent = user.name;
-    div.appendChild(name);
-
-    const email = document.createElement('p');
-    email.textContent = `Email: ${user.email}`;
-    div.appendChild(email);
-
-    // Add other user properties as needed...
-
-    return div;
-}
-
-// Call the function to fetch and display users
-fetchUsers();
 
 
 
