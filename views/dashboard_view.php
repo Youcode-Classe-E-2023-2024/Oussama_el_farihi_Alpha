@@ -4,12 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+        integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" 
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <title>Document</title>
 </head>
 <body class="flex bg-gray-100 min-h-screen">
   <!-------- start navbar-------->
   <aside class="hidden sm:flex sm:flex-col">
-    <a href="#" class="inline-flex items-center justify-center h-20 w-20 bg-purple-600 hover:bg-purple-500 focus:bg-purple-500">
+    <a href="index.php?page=dashboard" class="inline-flex items-center justify-center h-20 w-20 bg-purple-600 hover:bg-purple-500 focus:bg-purple-500">
       <svg fill="none" viewBox="0 0 64 64" class="h-12 w-12">
         <title>Company logo</title>
         <path d="M32 14.2c-8 0-12.9 4-14.9 11.9 3-4 6.4-5.6 10.4-4.5 2.3.6 4 2.3 5.7 4 2.9 3 6.3 6.4 13.7 6.4 7.9 0 12.9-4 14.8-11.9-3 4-6.4 5.5-10.3 4.4-2.3-.5-4-2.2-5.7-4-3-3-6.3-6.3-13.7-6.3zM17.1 32C9.2 32 4.2 36 2.3 43.9c3-4 6.4-5.5 10.3-4.4 2.3.5 4 2.2 5.7 4 3 3 6.3 6.3 13.7 6.3 8 0 12.9-4 14.9-11.9-3 4-6.4 5.6-10.4 4.5-2.3-.6-4-2.3-5.7-4-2.9-3-6.3-6.4-13.7-6.4z" fill="#fff"/>
@@ -17,13 +23,13 @@
     </a>
     <div class="flex-grow flex flex-col justify-between text-gray-500 bg-gray-800">
       <nav class="flex flex-col mx-4 my-6 space-y-4">
-        <a href="#" class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
+        <a href="index.php?page=product" class="inline-flex items-center justify-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg">
           <span class="sr-only">Folders</span>
           <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
           </svg>
         </a>
-        <a href="#" class="inline-flex items-center justify-center py-3 text-purple-600 bg-white rounded-lg">
+        <a href="index.php?page=users" class="inline-flex items-center justify-center py-3 text-purple-600 bg-white rounded-lg">
           <span class="sr-only">Dashboard</span>
           <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -104,184 +110,199 @@
       <div class="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">
         <div class="mr-6">
           <h1 class="text-4xl font-semibold mb-2">Dashboard</h1>
-          <h2 class="text-gray-600 ml-0.5">Mobile UX/UI Design course</h2>
-        </div>
-        <div class="flex flex-wrap items-start justify-end -mb-3">
-          <button class="inline-flex px-5 py-3 text-purple-600 hover:text-purple-700 focus:text-purple-700 hover:bg-purple-100 focus:bg-purple-100 border border-purple-600 rounded-md mb-3">
-            <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="flex-shrink-0 h-5 w-5 -ml-1 mt-0.5 mr-2">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-            </svg>
-            Manage dashboard
-          </button>
-          <button class="inline-flex px-5 py-3 text-white bg-purple-600 hover:bg-purple-700 focus:bg-purple-700 rounded-md ml-6 mb-3">
-            <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-            </svg>
-            Create new dashboard
-          </button>
+        
         </div>
       </div>
-      <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
-        <div class="flex items-center p-8 bg-white shadow rounded-lg">
-          <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-purple-600 bg-purple-100 rounded-full mr-6">
-            <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-          </div>
-          <div>
-            <span class="block text-2xl font-bold">62</span>
-            <span class="block text-gray-500">Students</span>
-          </div>
+      <!--------- start metrics -------------------->
+ 
+      <div class="container mx-auto p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+        <!-- Metrics Section -->
+        <div class="md:col-span-1 lg:col-span-1 flex flex-col justify-center">
+            <div class="bg-blue-500 p-4 rounded-md shadow-md text-white mb-4">
+                <h2 class="text-xl font-semibold mb-2">Metrics Section</h2>
+                <!-- Example Metrics Content -->
+                <p id="totalPosts">Total Posts:</p>
+                <p id="totalUsers">Total Users:</p>
+            </div>
+            <div class="bg-blue-500 p-4 rounded-md shadow-md text-white mb-4">
+                <h2 class="text-xl font-semibold mb-2">Metrics Section</h2>
+                <!-- Example Metrics Content -->
+                <p id="totalPosts">Total Posts:</p>
+                <p id="totalUsers">Total Users:</p>
+            </div>
+            <div class="bg-purple-500 p-4 rounded-md shadow-md text-white">
+                <h2 class="text-xl font-semibold mb-2">PDF Statistics</h2>
+                <!-- Example PDF Statistics Content -->
+                <p>Total Downloads: 500</p>
+                <p>Most Downloaded: Product X</p>
+            </div>
         </div>
-        <div class="flex items-center p-8 bg-white shadow rounded-lg">
-          <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-green-600 bg-green-100 rounded-full mr-6">
-            <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-            </svg>
-          </div>
-          <div>
-            <span class="block text-2xl font-bold">6.8</span>
-            <span class="block text-gray-500">Average mark</span>
-          </div>
+
+        <!-- Graph Section -->
+        <div class="md:col-span-1 lg:col-span-1">
+            <div class="bg-green-500 p-4 rounded-md shadow-md text-white mb-4">
+                <h2 class="text-xl font-semibold mb-2">Graph Section</h2>
+                <canvas id="myChart" width="800" height="400"></canvas>
+                <button onclick="generatePDF()">Generate PDF</button>
+            </div>
         </div>
-        <div class="flex items-center p-8 bg-white shadow rounded-lg">
-          <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-red-600 bg-red-100 rounded-full mr-6">
-            <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
-            </svg>
-          </div>
-          <div>
-            <span class="inline-block text-2xl font-bold">9</span>
-            <span class="inline-block text-xl text-gray-500 font-semibold">(14%)</span>
-            <span class="block text-gray-500">Underperforming students</span>
-          </div>
-        </div>
-        <div class="flex items-center p-8 bg-white shadow rounded-lg">
-          <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-blue-600 bg-blue-100 rounded-full mr-6">
-            <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-            </svg>
-          </div>
-          <div>
-            <span class="block text-2xl font-bold">83%</span>
-            <span class="block text-gray-500">Finished homeworks</span>
-          </div>
-        </div>
-      </section>
-      <section class="grid md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-3 xl:grid-flow-col gap-6">
-        <div class="flex flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
-          <div class="px-6 py-5 font-semibold border-b border-gray-100">The number of applied and left students per month</div>
-          <div class="p-4 flex-grow">
-            <div class="flex items-center justify-center h-full px-4 py-16 text-gray-400 text-3xl font-semibold bg-gray-100 border-2 border-gray-200 border-dashed rounded-md">Chart</div>
-          </div>
-        </div>
-        <div class="flex items-center p-8 bg-white shadow rounded-lg">
-          <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-yellow-600 bg-yellow-100 rounded-full mr-6">
-            <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-              <path fill="#fff" d="M12 14l9-5-9-5-9 5 9 5z" />
-              <path fill="#fff" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-            </svg>
-          </div>
-          <div>
-            <span class="block text-2xl font-bold">25</span>
-            <span class="block text-gray-500">Lections left</span>
-          </div>
-        </div>
-        <div class="flex items-center p-8 bg-white shadow rounded-lg">
-          <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-teal-600 bg-teal-100 rounded-full mr-6">
-            <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-          <div>
-            <span class="block text-2xl font-bold">139</span>
-            <span class="block text-gray-500">Hours spent on lections</span>
-          </div>
-        </div>
-        <div class="row-span-3 bg-white shadow rounded-lg">
-          <div class="flex items-center justify-between px-6 py-5 font-semibold border-b border-gray-100">
-            <span>Students by average mark</span>
-            <button type="button" class="inline-flex justify-center rounded-md px-1 -mr-1 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-600" id="options-menu" aria-haspopup="true" aria-expanded="true">
-              Descending
-              <svg class="-mr-1 ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-              </svg>
-            </button>
-            <!-- Refer here for full dropdown menu code: https://tailwindui.com/components/application-ui/elements/dropdowns -->
-          </div>
-          <div class="overflow-y-auto" style="max-height: 24rem;">
-            <ul class="p-6 space-y-6">
-              <li class="flex items-center">
-                <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                  <img src="https://randomuser.me/api/portraits/women/82.jpg" alt="Annette Watson profile picture">
-                </div>
-                <span class="text-gray-600">Annette Watson</span>
-                <span class="ml-auto font-semibold">9.3</span>
-              </li>
-              <li class="flex items-center">
-                <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                  <img src="https://randomuser.me/api/portraits/men/81.jpg" alt="Calvin Steward profile picture">
-                </div>
-                <span class="text-gray-600">Calvin Steward</span>
-                <span class="ml-auto font-semibold">8.9</span>
-              </li>
-              <li class="flex items-center">
-                <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                  <img src="https://randomuser.me/api/portraits/men/80.jpg" alt="Ralph Richards profile picture">
-                </div>
-                <span class="text-gray-600">Ralph Richards</span>
-                <span class="ml-auto font-semibold">8.7</span>
-              </li>
-              <li class="flex items-center">
-                <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                  <img src="https://randomuser.me/api/portraits/men/79.jpg" alt="Bernard Murphy profile picture">
-                </div>
-                <span class="text-gray-600">Bernard Murphy</span>
-                <span class="ml-auto font-semibold">8.2</span>
-              </li>
-              <li class="flex items-center">
-                <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                  <img src="https://randomuser.me/api/portraits/women/78.jpg" alt="Arlene Robertson profile picture">
-                </div>
-                <span class="text-gray-600">Arlene Robertson</span>
-                <span class="ml-auto font-semibold">8.2</span>
-              </li>
-              <li class="flex items-center">
-                <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                  <img src="https://randomuser.me/api/portraits/women/77.jpg" alt="Jane Lane profile picture">
-                </div>
-                <span class="text-gray-600">Jane Lane</span>
-                <span class="ml-auto font-semibold">8.1</span>
-              </li>
-              <li class="flex items-center">
-                <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                  <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Pat Mckinney profile picture">
-                </div>
-                <span class="text-gray-600">Pat Mckinney</span>
-                <span class="ml-auto font-semibold">7.9</span>
-              </li>
-              <li class="flex items-center">
-                <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                  <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Norman Walters profile picture">
-                </div>
-                <span class="text-gray-600">Norman Walters</span>
-                <span class="ml-auto font-semibold">7.7</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="flex flex-col row-span-3 bg-white shadow rounded-lg">
-          <div class="px-6 py-5 font-semibold border-b border-gray-100">Students by type of studying</div>
-          <div class="p-4 flex-grow">
-            <div class="flex items-center justify-center h-full px-4 py-24 text-gray-400 text-3xl font-semibold bg-gray-100 border-2 border-gray-200 border-dashed rounded-md">Chart</div>
-          </div>
-        </div>
-      </section>
-      <section class="text-right font-semibold text-gray-500">
-        <a href="#" class="text-purple-600 hover:underline">Recreated on Codepen</a> with <a href="https://tailwindcss.com/" class="text-teal-400 hover:underline">Tailwind CSS</a> by Azri Kahar, <a href="https://dribbble.com/shots/10711741-Free-UI-Kit-for-Figma-Online-Courses-Dashboard" class="text-purple-600 hover:underline">original design</a> made by Chili Labs
-      </section>
-    </main>
-  </div>
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+            $('#productTable').DataTable({
+                "paging": true,
+                "searching": true,
+                "info": false,
+            });
+        });
+
+
+        function generatePDF() {
+            const element = document.getElementById("myChart");
+
+            // Provide options (optional)
+            const options = {
+                margin: 10,
+                filename: 'generated.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            // Call the html2pdf function
+            html2pdf(element, options);
+        }
+    </script>
+
+    <script>
+        var users = []
+        fetch("https://jsonplaceholder.typicode.com/users")
+            .then(response => response.json())
+            .then(data => {
+                users = data.map(user => ({
+                    id: user.id,
+                    name: user.name,
+                    counter: 0
+                }))
+                return fetch("https://jsonplaceholder.typicode.com/posts");
+            })
+            .then(response => response.json())
+            .then(postsData => {
+                postsData.forEach(post => {
+                    const user = users.find(user => user.id === post.userId);
+                    if (user) {
+                        user.counter++;
+                    }
+                });
+                createChart();
+            })
+            
+            function createChart() {
+    var ctx = document.getElementById("myChart").getContext("2d");
+
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: users.map(user => user.name),
+            datasets: [{
+                label: 'Number of Posts per User',
+                data: users.map(user => user.counter),
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.7)',
+                    'rgba(54, 162, 235, 0.7)',
+                    'rgba(255, 206, 86, 0.7)',
+                    'rgba(75, 192, 192, 0.7)',
+                    'rgba(153, 102, 255, 0.7)',
+                    'rgba(255, 159, 64, 0.7)',
+                    'rgba(199, 199, 199, 0.7)',
+                    'rgba(83, 102, 255, 0.7)',
+                    'rgba(40, 159, 64, 0.7)',
+                    'rgba(255, 99, 132, 0.7)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(199, 199, 199, 1)',
+                    'rgba(83, 102, 255, 1)',
+                    'rgba(40, 159, 64, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        font: {
+                            size: 14
+                        }
+                    }
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                },
+            },
+            animation: {
+                duration: 1000,
+            },
+        }
+    });
+}
+
+
+        let countPosts = 0;
+        fetch("https://jsonplaceholder.typicode.com/posts")
+            .then(response => response.json())
+            .then(data => {
+                data.forEach((val) => {
+                    if (val.id) {
+                        countPosts++;
+                    }
+                });
+                document.getElementById("totalPosts").innerHTML += countPosts;
+            });
+
+        let countUsers = 0;
+        fetch("https://jsonplaceholder.typicode.com/users")
+            .then(response => response.json())
+            .then(data => {
+                data.forEach((val) => {
+                    if (val.id) {
+                        countUsers++;
+                    }
+                });
+                document.getElementById("totalUsers").innerHTML += countUsers;
+            });
+
+        fetch("https://jsonplaceholder.typicode.com/posts")
+            .then(response => response.json())
+            .then(data => {
+                data.forEach((val) => {
+                    let tr = document.createElement('tr');
+                    let td = document.createElement('td');
+                    td.innerHTML = val.title;
+                    tr.appendChild(td);
+                    document.getElementById('products').appendChild(tr);
+                });
+            });
+        
+    </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="assets\js\main.js"></script>
 </body>
 </html>
